@@ -1,0 +1,39 @@
+server:
+  port: 9061
+spring:
+  application:
+    name: music-cloud-api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: auth-service
+          uri: lb://music-cloud-auth-server
+          predicates:
+          - Path=/auth/**
+          filters:
+          - StripPrefix=1
+        - id: shop-service
+          uri: lb://music-cloud-shop-server
+          predicates:
+          - Path=/shop/**
+          filters:
+          - StripPrefix=1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9060/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+#security:
+#  oauth2:
+#    client:
+#      id:

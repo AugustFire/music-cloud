@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: music-cloud-shop-server
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+server:
+  port: 9063
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9060/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+auth-server: http://localhost:9061/auth
+security:
+  oauth2:
+    client:
+      id: TEST_001
+      client-secret: 123456
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      access-token-uri: ${auth-server}/oauth/token
+      client-id: yzx_client
+    resource:
+#      jwt:
+#        key-uri: ${auth-server}/oauth/token_key
+      user-info-uri: ${auth-server}/user/me
+      token-info-uri: ${auth-server}/oauth/check_token
+
+logging:
+  level:
+    org.springframework.security: debug
