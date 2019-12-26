@@ -1,4 +1,4 @@
-package com.young.music.cloud.shop.server;
+package com.young.music.cloud.shop.server.conf;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

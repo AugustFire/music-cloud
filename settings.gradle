@@ -3,4 +3,5 @@ include 'music-cloud-eureka-server'
 include 'music-cloud-auth-server'
 include 'music-cloud-api-gateway'
 include 'music-cloud-shop-server'
+include 'music-cloud-pay-server'
 

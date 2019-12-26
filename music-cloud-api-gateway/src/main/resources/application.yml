@@ -9,18 +9,27 @@ spring:
         locator:
           enabled: false
       routes:
-        - id: auth-service
+        # 认证授权模块
+        - id: auth-server
           uri: lb://music-cloud-auth-server
           predicates:
           - Path=/auth/**
           filters:
           - StripPrefix=1
-        - id: shop-service
+        # 服务A
+        - id: shop-server
           uri: lb://music-cloud-shop-server
           predicates:
           - Path=/shop/**
           filters:
           - StripPrefix=1
+        # 服务B
+        - id: pay-server
+          uri: lb://music-cloud-pay-server
+          predicates:
+            - Path=/pay/**
+          filters:
+            - StripPrefix=1
 eureka:
   client:
     service-url:

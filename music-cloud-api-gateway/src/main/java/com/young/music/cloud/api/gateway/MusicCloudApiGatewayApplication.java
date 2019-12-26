@@ -9,9 +9,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * 2019-8-2 统一网关
  *
  * @author yzx
+ * @see EnableEurekaClient 注解可省略
  */
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@EnableEurekaClient
 public class MusicCloudApiGatewayApplication {
 
 
