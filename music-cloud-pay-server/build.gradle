@@ -4,5 +4,6 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 //    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix'
+    implementation group: 'com.google.guava', name: 'guava', version: '28.2-jre'
 }
 

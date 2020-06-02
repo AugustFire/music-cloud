@@ -27,7 +27,7 @@ spring:
             args:
               key-resolver: '#{@hostAddrKeyResolver}'   #用于限流键解析器的beanName
               redis-rate-limiter.replenishRate: 1       #令牌桶每秒填充速度
-              redis-rate-limiter.burstCapacity: 3       #令牌桶总容量
+              redis-rate-limiter.burstCapacity: 1       #令牌桶总容量
         # 服务B
         - id: pay-server
           uri: lb://music-cloud-pay-server

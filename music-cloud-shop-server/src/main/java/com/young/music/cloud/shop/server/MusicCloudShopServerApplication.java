@@ -41,6 +41,7 @@ public class MusicCloudShopServerApplication {
     }
 
     @GetMapping(value = "/api2")
+    @PreAuthorize("hasAnyRole('USER')")
     public String say() {
         System.out.println("debug-----------------------api2");
         String name = "shop-server";

@@ -22,16 +22,18 @@ security:
       client-secret: 123456
       user-authorization-uri: ${auth-server}/oauth/authorize
       access-token-uri: ${auth-server}/oauth/token
-      client-id: yzx_client
+      client-id: yzx_client_server
     resource:
 #      jwt:
 #        key-uri: ${auth-server}/oauth/token_key
-      user-info-uri: ${auth-server}/user/me
+#      user-info-uri: ${auth-server}/user/me
       token-info-uri: ${auth-server}/oauth/check_token
 
 logging:
   level:
     org.springframework.security: debug
+    org.apache.http.client: debug
+    org.springframework.http.client: debug
 
 feign:
   hystrix:

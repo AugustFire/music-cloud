@@ -1,6 +1,7 @@
 package com.young.music.cloud.auth.server.conf.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,21 +30,6 @@ public class OAuth2ServerConfig {
 
 
     @Configuration
-    @EnableResourceServer
-    public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            http
-                    .csrf().disable()
-                    .formLogin()
-                    .and()
-                    .authorizeRequests()
-                    .antMatchers("/**")
-                    .permitAll();
-        }
-    }
-
-    @Configuration
     @EnableAuthorizationServer
     protected static class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
@@ -52,6 +38,7 @@ public class OAuth2ServerConfig {
         AuthenticationManager authenticationManager;
 
         @Autowired
+        @Qualifier("tokenStore")
         TokenStore redisTokenStore;
 
         @Autowired
@@ -67,7 +54,13 @@ public class OAuth2ServerConfig {
                     .scopes("all")
                     .secret("$2a$10$BT1oS.cFuJF/GMoh.t7bq.Sp17siiB7.qL2TlV5R/7k8uT7ZJK4XO")
                     .authorities("ROLE_CLIENT")
-                    .authorizedGrantTypes("password", "refresh_token");
+                    .authorizedGrantTypes("password", "refresh_token")
+                    .and()
+                    .withClient("yzx_client_server")
+                    .scopes("all")
+                    .secret("$2a$10$BT1oS.cFuJF/GMoh.t7bq.Sp17siiB7.qL2TlV5R/7k8uT7ZJK4XO")
+                    .authorities("ROLE_CLIENT")
+                    .authorizedGrantTypes("client_credentials");
         }
 
         @Override
