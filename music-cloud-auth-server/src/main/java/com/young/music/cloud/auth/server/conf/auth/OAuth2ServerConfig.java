@@ -76,7 +76,7 @@ public class OAuth2ServerConfig {
             //允许表单认证
             security
                     //permitAll /oauth/token_key
-                    .tokenKeyAccess("permitAll()")
+                    .tokenKeyAccess("permitAll()") //token_key 秘钥 jwt获取秘钥验证
                     //permitAll /oauth/check_token
                     .checkTokenAccess("permitAll()")
                     .allowFormAuthenticationForClients();

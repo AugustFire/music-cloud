@@ -20,12 +20,12 @@ security:
     client:
       id: TEST_001
       client-secret: 123456
-      user-authorization-uri: ${auth-server}/oauth/authorize
-      access-token-uri: ${auth-server}/oauth/token
+#      user-authorization-uri: ${auth-server}/oauth/authorize
+#      access-token-uri: ${auth-server}/oauth/token
       client-id: yzx_client_server
     resource:
 #      jwt:
-#        key-uri: ${auth-server}/oauth/token_key
+#        key-uri: ${auth-server}/oauth/token_key  //jwt_token_key 获取验证jwt秘钥 启动时获取 所以要先启动认证服务器 @see TokenKeyEndpoint
 #      user-info-uri: ${auth-server}/user/me
       token-info-uri: ${auth-server}/oauth/check_token
 
